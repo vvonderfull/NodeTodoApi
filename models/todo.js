@@ -1,21 +1,25 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const postSchema = new Schema({
-    title: {
+const todoSchema = new Schema({
+    name: {
         type: String,
         required: true
     },
-    text: {
+    description: {
         type: String,
         required: true
     },
-    author: {
+    completed: {
+        type: Boolean,
+        required: true
+    },
+    category: {
         type: String,
         required: true
     },
 }, {timestamps: true})
 
-const Post = mongoose.model('Post', postSchema)
+const Todo = mongoose.model('Todo', todoSchema)
 
-module.exports = Post
+module.exports = Todo
