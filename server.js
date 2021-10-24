@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const todoApiRoutes = require("./routes/api-todo-routes");
+const categoryApiRoutes = require("./routes/api-category-routes");
 require("dotenv").config();
 
 const errorMsg = chalk.bgKeyword("white").redBright;
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 app.use(todoApiRoutes);
+app.use(categoryApiRoutes);
 
 app.use((req, res) => {
   res.status(404)

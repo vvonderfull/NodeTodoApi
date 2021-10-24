@@ -15,7 +15,7 @@ const todoSchema = new Schema({
         required: true
     },
     category: {
-        type: String,
+        type: Object,
         required: true
     },
 }, {timestamps: true})
