@@ -39,6 +39,10 @@ app.use(express.json())
 
 app.use(methodOverride("_method"));
 
+app.get('/', (request, res) => {
+        res.send('Conneccteedd!!')
+    }
+)
 app.use(todoApiRoutes);
 app.use(categoryApiRoutes);
 
