@@ -23,7 +23,7 @@ mongoose
         console.log(errorMsg(err));
     });
 
-app.listen(process.env.PORT || 3000, (error) => {
+app.listen(process.env.PORT, (error) => {
     error
         ? console.log(errorMsg(error))
         : console.log(successMsg("listen " + process.env.PORT));
@@ -33,16 +33,10 @@ app.use(
     morgan(":method :url :status :res[content-length] - :response-time ms")
 );
 
-// app.use(express.urlencoded({ extended: false }));
-
 app.use(express.json())
 
 app.use(methodOverride("_method"));
 
-app.get('/', (request, res) => {
-        res.send('Conneccteedd!!')
-    }
-)
 app.use(todoApiRoutes);
 app.use(categoryApiRoutes);
 
