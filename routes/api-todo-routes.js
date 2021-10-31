@@ -12,7 +12,7 @@ const router = express.Router();
 //Get All posts
 router.get("/api/todo/getAll", getTodos);
 //Get Post by ID
-router.get("/api/todo/getOne/:id", getTodo);
+router.get("/api/todo/getById/:id", getTodo);
 //Add New Post
 router.post("/api/todo/create", addTodo);
 // Update Post by ID

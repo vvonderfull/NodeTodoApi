@@ -15,25 +15,27 @@ const app = express();
 app.use(cors());
 
 mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => {
-    console.log(successMsg("Connect DB!"));
-  })
-  .catch((err) => {
-    console.log(errorMsg(err));
-  });
+    .connect(process.env.MONGO_URL)
+    .then(() => {
+        console.log(successMsg("Connect DB!"));
+    })
+    .catch((err) => {
+        console.log(errorMsg(err));
+    });
 
 app.listen(process.env.PORT, (error) => {
-  error
-    ? console.log(errorMsg(error))
-    : console.log(successMsg("listen " + process.env.PORT));
+    error
+        ? console.log(errorMsg(error))
+        : console.log(successMsg("listen " + process.env.PORT));
 });
 
 app.use(
-  morgan(":method :url :status :res[content-length] - :response-time ms")
+    morgan(":method :url :status :res[content-length] - :response-time ms")
 );
 
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
+
+app.use(express.json())
 
 app.use(methodOverride("_method"));
 
@@ -41,5 +43,5 @@ app.use(todoApiRoutes);
 app.use(categoryApiRoutes);
 
 app.use((req, res) => {
-  res.status(404)
+    res.status(404)
 });
